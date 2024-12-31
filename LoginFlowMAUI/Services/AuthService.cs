@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoginFlowMAUI.Services
+﻿namespace LoginFlowMAUI.Services
 {
     public class AuthService
     {
@@ -13,17 +7,17 @@ namespace LoginFlowMAUI.Services
         {
             await Task.Delay(2000);
 
-            var authState = Preferences.Default.Get<bool>(AuthStateKey, false);
+            var authState = Preferences.Default.Get<bool>(key: AuthStateKey,defaultValue: false);
 
             return authState;
         }
         public void Login()
         {
-            Preferences.Default.Set<bool>(AuthStateKey, true);
+            Preferences.Default.Set<bool>(key: AuthStateKey,value: true);
         }
         public void Logout() 
         {
-            Preferences.Default.Remove(AuthStateKey);
+            Preferences.Default.Remove(key: AuthStateKey);
         }
     }
 }
